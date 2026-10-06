@@ -41,16 +41,15 @@ flowchart LR
 - I took a vendor's prototype to a production pilot: dropped Elasticsearch so the graph is the single catalogue, made ingestion idempotent and resumable (MD5 audit, per-file error isolation), added a multimodal path for CAD drawings and won/lost outcomes read from the emails.
 - **Evaluation before demos:** a deterministic benchmark of 80+ queries in 12 categories, **53/53** passing.
 - **Measure before scaling:** an inventory of 80,652 files showed the ingestion selector covered only **14.7%** of them, so I stopped the rollout and replanned it in auditable batches.
-- Runs on an internal VM with its own Docker registry, behind Active Directory login.
 
-`LangGraph` `Gemini (Vertex AI)` `Neo4j` `PostgreSQL` `FastAPI` `React` `Docker`
+`LangGraph` `Gemini (Vertex AI)` `Neo4j` `PostgreSQL` `FastAPI` `React` `Active Directory`
 
 ### 📊 BI on top of a 20-year-old ERP, without touching it · in production
 
 - No schema docs, so I reverse-engineered it: ~1,460 tables, the 1,501 desktop screens as a blueprint of which fields matter, and ~30,000 labels mapped. GenAI only sped up the discovery; at runtime it's plain SQL.
 - FastAPI (12 routers) and React, ~17 pages across 6 departments, Active Directory login and a 9-profile permission matrix checked user by user.
 - The figures reconcile **to the euro** with the general ledger in the months verified with finance.
-- Delivered **4 days early**. Its deployment (private registry, nginx, loopback-only backend, versioned releases with a backup first) became the standard for everything after it.
+- Its deployment (private registry, nginx, loopback-only backend, versioned releases with a backup first) became the standard for every app after it.
 
 `FastAPI` `React` `TypeScript` `SQL Server` `Active Directory` `Docker` `nginx`
 
@@ -62,7 +61,7 @@ flowchart LR
 
 - Rebuilt in-house from scratch: 277 pages in Spanish, English and Galician, catalogue by market and a hero video with equipment hotspots.
 - Mobile home page from **12 MB to 2.8 MB**; zero external hosts (self-hosted fonts, analytics only after consent).
-- Replaced the old WordPress site with **zero downtime**, a week ahead of schedule: 271/271 sitemap URLs and 152/152 redirects verified that same afternoon.
+- Replaced the old WordPress site with **zero downtime**: 271/271 sitemap URLs and 152/152 redirects verified after the switch.
 
 `Astro` `React` `Tailwind` `MDX`
 
@@ -79,7 +78,7 @@ flowchart LR
 | **Repairs calendar** | Cleaned 1,969 raw rows down to 289 vessels (the manual list knew ~150), then an inspection due-date engine and live order tracking from the ERP. In internal use. |
 | **Supplier invoices** | Asked for an OCR upload portal; the regulatory analysis showed the law forbids forcing suppliers onto one, so before a line of code it became a universal inbox plus a three-way match against the ERP. |
 
-## 🎙️ Jarvis · voice assistant that lives on my Mac
+## 🎙️ Jarvis · voice assistant
 
 <table><tr>
 <td width="48%"><img src="assets/jarvis-hud.png" alt="Jarvis HUD: agenda, mail, the voice orb and the inbox of things that need me"></td>
@@ -88,7 +87,7 @@ flowchart LR
 - “Hey Jarvis” (or a double knock on the laptop) → local wake word and Whisper → **Claude Code headless** → local voice → live HUD in the browser.
 - Reads my calendar, Notion tasks and mail; **writes only when I tell it to** and deletes only after a spoken “yes”. Those limits live in code (hooks), not in the prompt.
 - Delegates coding jobs to an agent locked in `sandbox-exec` that can only push to its own branch.
-- Audio and voice never leave the machine; the voice is a TTS model fine-tuned locally.
+- Wake word, transcription and speech run locally; the model only receives text. The voice is a fine-tuned TTS model.
 - 22 architecture decision records and ~1,750 tests.
 
 `Python` `Whisper` `openWakeWord` `Claude` `TTS` `SSE`
@@ -114,7 +113,7 @@ flowchart LR
 
 ## 🧩 Software for small businesses
 
-With a partner I build software for small businesses in Vigo: websites as the way in, automation as the product. Everything is self-hosted on my own server.
+With a partner I build software for small businesses in Vigo: websites as the way in, automation as the product.
 
 | Project | What it does | Stack |
 |---|---|---|
@@ -145,7 +144,7 @@ flowchart LR
 | **Mac sensors, the hard way** | Reverse-engineered the private trackpad framework on an M4 with macOS 26 (decoded the 96-byte touch struct from raw dumps, no permission prompts) and read the accelerometer at 804 Hz without root. The double-knock detector looks for a knock–silence–knock pattern, because to an accelerometer a key press *is* a knock, and a replay mode tests every threshold against recorded sessions. It now turns Jarvis's mic on and off. `Swift` |
 | **Self-hosted platform** | One VPS with Coolify, Traefik, HTTPS and an auth gateway in front of n8n, Whisper, Open WebUI and every client demo. Raw ports closed in the `DOCKER-USER` chain, because Docker bypasses ufw. `Docker` `Coolify` `Traefik` |
 | **My Claude Code workshop** | My `~/.claude` under version control: 9 global skills, a 53-skill library, agents and hooks (tests before every commit, a guard on pushes that deploy). It syncs every night, only after scanning for secrets and passing its own tests. Plus a one-page engineering standard by project stage that every repo carries. |
-| **Group-trip PWA** | Built for a real trip with friends and used all the way through: Tricount-style shared expenses and daily chronicles written by Gemini from the day's photos and events. `FastAPI` `Gemini` `PWA` |
+| **Group-trip PWA** | Tricount-style shared expenses and daily chronicles written by Gemini from the day's photos and events. `FastAPI` `Gemini` `PWA` |
 | **Notion widgets and a phone HUD** | Zero-dependency widgets embedded in Notion (agenda, server status, monthly spending) and a PWA that puts Jarvis's tasks on my phone. |
 
 ## 🎓 Degree coursework

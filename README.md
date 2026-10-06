@@ -1,6 +1,6 @@
 ### Hi, I'm Roque 👋
 
-AI engineer at **[FERRI](https://ferri-sa.es)**, a marine deck-machinery manufacturer in Vigo, Spain, where I'm building the AI department from scratch. I take AI from prototype to production: retrieval over decades of engineering offers, BI on top of a 20-year-old ERP, CAD-to-ERP automation. Outside work I build software and agents for small businesses, and a voice assistant that runs my day.
+AI engineer at **[FERRI](https://ferri-sa.es)**, a marine deck-machinery manufacturer in Vigo, Spain, where I'm building the AI department from scratch. I take AI from prototype to production: retrieval over decades of engineering offers, BI on top of a 20-year-old ERP, CAD-to-ERP automation. Outside work I build software and agents, and a voice assistant that runs my day.
 
 **BSc (Hons) Artificial Intelligence, First Class** · De Montfort University (2022–2025)
 
@@ -20,7 +20,7 @@ AI engineer at **[FERRI](https://ferri-sa.es)**, a marine deck-machinery manufac
 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
 ![n8n](https://img.shields.io/badge/n8n-EA4B71?logo=n8n&logoColor=white)
 
-> The code is private (company and client work), so this page is the whole picture. Happy to walk you through any of it.
+> The code is private, so this page is the whole picture. Happy to walk you through any of it.
 
 ---
 
@@ -111,17 +111,15 @@ flowchart LR
 </td>
 </tr></table>
 
-## 🧩 Software for small businesses
-
-With a partner I build software for small businesses in Vigo: websites as the way in, automation as the product.
+## 🧩 Apps and agents
 
 | Project | What it does | Stack |
 |---|---|---|
-| **Case management for a consultancy** | Clients, case files by phase, deadlines counted in business days, grant calls, documents, agenda and search. A shared core with one vertical per client. Demo deployed. | `Next.js` `Payload` `PostgreSQL` `Playwright` |
-| **Day-care centre for the elderly** | Attendance, resident records, transport, canteen, incidents and admissions, with role-based access. Demo deployed. | `Next.js` `Payload` `PostgreSQL` `Playwright` |
-| **Sports club website** | Full rebuild with a CMS the club can edit: a benchmark of 19 clubs, content migration, redirects and analytics. Deployed as a working proposal. | `Next.js` `Payload` |
-| **Work-time register** | Spain's mandatory time tracking done by the book: immutable records with a separate corrections log, login by tax ID, an inspection-ready export. Each client is generated from a template; first one deployed. | `FastAPI` `Next.js` |
-| **3D site for a renovation company** | A low-poly house renovates itself phase by phase as you scroll: a 195 KB 3D chunk, rendering only when something changes, and a complete static fallback. | `Astro` `three.js` `GSAP` |
+| **Case management system** | Clients, case files by phase, deadlines counted in business days, grant calls, documents, agenda and search. A shared core with pluggable verticals. | `Next.js` `Payload` `PostgreSQL` `Playwright` |
+| **Day-care centre management** | Attendance, resident records, transport, canteen, incidents and admissions, with role-based access. | `Next.js` `Payload` `PostgreSQL` `Playwright` |
+| **Sports club website** | Full rebuild with an editable CMS: a benchmark of 19 clubs, content migration, redirects and analytics. | `Next.js` `Payload` |
+| **Work-time register** | Spain's mandatory time tracking done by the book: immutable records with a separate corrections log, login by tax ID, an inspection-ready export. Multi-company, each one generated from a template. | `FastAPI` `Next.js` |
+| **3D scrollytelling site** | A low-poly house renovates itself phase by phase as you scroll: a 195 KB 3D chunk, rendering only when something changes, and a complete static fallback. | `Astro` `three.js` `GSAP` |
 
 ### ⚙️ AI agents · n8n
 
@@ -132,8 +130,8 @@ flowchart LR
 ```
 
 - A multi-agent office assistant: the agent only **talks and routes**; every action runs in a **deterministic sub-workflow**, not as a loose tool.
-- An AI receptionist for dental clinics over Telegram that books, reschedules and cancels appointments.
-- A prospecting agent that spots outdated local websites and builds a demo from the business's real content; **a human reviews every email** before it goes out.
+- An AI receptionist over Telegram that books, reschedules and cancels appointments.
+- An agent that audits websites for signs of age and rebuilds a demo from the site's own content and photos, inventing nothing.
 
 `n8n` `Gemini` `Open WebUI` `Telegram` `Playwright` `Coolify`
 
@@ -142,7 +140,7 @@ flowchart LR
 | Project | What it is |
 |---|---|
 | **Mac sensors, the hard way** | Reverse-engineered the private trackpad framework on an M4 with macOS 26 (decoded the 96-byte touch struct from raw dumps, no permission prompts) and read the accelerometer at 804 Hz without root. The double-knock detector looks for a knock–silence–knock pattern, because to an accelerometer a key press *is* a knock, and a replay mode tests every threshold against recorded sessions. It now turns Jarvis's mic on and off. `Swift` |
-| **Self-hosted platform** | One VPS with Coolify, Traefik, HTTPS and an auth gateway in front of n8n, Whisper, Open WebUI and every client demo. Raw ports closed in the `DOCKER-USER` chain, because Docker bypasses ufw. `Docker` `Coolify` `Traefik` |
+| **Self-hosted platform** | One VPS with Coolify, Traefik, HTTPS and an auth gateway in front of n8n, Whisper, Open WebUI and the apps above. Raw ports closed in the `DOCKER-USER` chain, because Docker bypasses ufw. `Docker` `Coolify` `Traefik` |
 | **My Claude Code workshop** | My `~/.claude` under version control: 9 global skills, a 53-skill library, agents and hooks (tests before every commit, a guard on pushes that deploy). It syncs every night, only after scanning for secrets and passing its own tests. Plus a one-page engineering standard by project stage that every repo carries. |
 | **Group-trip PWA** | Tricount-style shared expenses and daily chronicles written by Gemini from the day's photos and events. `FastAPI` `Gemini` `PWA` |
 | **Notion widgets and a phone HUD** | Zero-dependency widgets embedded in Notion (agenda, server status, monthly spending) and a PWA that puts Jarvis's tasks on my phone. |
